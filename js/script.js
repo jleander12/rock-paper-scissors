@@ -10,15 +10,21 @@ game();
 function playRound() {
     let playerChoice = getPlayerChoice().toUpperCase();
     let computerChoice = getComputerChoice().toUpperCase();
-    if ((playerChoice === 'ROCK' && computerChoice === 'SCISSORS') || (playerChoice === 'PAPER' && computerChoice === 'ROCK') || (playerChoice === 'SCISSORS' && computerChoice === 'PAPER')) {
+    if ((playerChoice === 'ROCK' && computerChoice === 'SCISSORS') 
+    || (playerChoice === 'PAPER' && computerChoice === 'ROCK') 
+    || (playerChoice === 'SCISSORS' && computerChoice === 'PAPER')) {
         console.log(`You Win! ${playerChoice} beats ${computerChoice}`);
         playerWins++;
-    } else if ((computerChoice === 'ROCK' && playerChoice === 'SCISSORS') || (computerChoice === 'PAPER' && playerChoice === 'ROCK') || (computerChoice === 'SCISSORS' && playerChoice === 'PAPER')) {
+    } else if ((computerChoice === 'ROCK' && playerChoice === 'SCISSORS') 
+    || (computerChoice === 'PAPER' && playerChoice === 'ROCK') 
+    || (computerChoice === 'SCISSORS' && playerChoice === 'PAPER')) {
         console.log(`You Lose! ${playerChoice} is beaten by ${computerChoice}`);
         computerWins++;
     } else {
         console.log(`Its a Tie! Both players chose ${playerChoice}`);
         ties++;
+        
+
     }
 }
 
