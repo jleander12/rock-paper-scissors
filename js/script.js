@@ -22,7 +22,8 @@ function playRound(e) {
         console.log(`Its a Tie! Both players chose ${playerChoice}`);
         ties++;
     }
-    console.log(`${playerWins} wins, ${computerWins} losses, and ${ties} ties`)
+    const currentScore = document.getElementById('score');
+    currentScore.innerHTML = `Player: ${playerWins}, Computer: ${computerWins}, Ties: ${ties}`;
 }
 
 // This function takes no input and uses a random number 0, 1, or 2 to decide rock, paper, or scissors
