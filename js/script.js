@@ -8,6 +8,7 @@ let ties = 0;
 function playRound(e) {
     let playerChoice = this.id.toUpperCase();
     let computerChoice = getComputerChoice().toUpperCase();
+    //determine who won and increment total points
     if ((playerChoice === 'ROCK' && computerChoice === 'SCISSORS') 
         || (playerChoice === 'PAPER' && computerChoice === 'ROCK') 
         || (playerChoice === 'SCISSORS' && computerChoice === 'PAPER')) {
@@ -22,8 +23,15 @@ function playRound(e) {
         console.log(`Its a Tie! Both players chose ${playerChoice}`);
         ties++;
     }
+    //update score banner
     const currentScore = document.getElementById('score');
-    currentScore.innerHTML = `Player: ${playerWins}, Computer: ${computerWins}, Ties: ${ties}`;
+    if (playerWins >= 5) {
+        currentScore.innerHTML = `You've won! Congratulations!`;
+    } else if (computerWins >= 5) {
+        currentScore.innerHTML = `Oh no, you lost! Better luck next time!`;
+    } else {
+        currentScore.innerHTML = `Player: ${playerWins}, Computer: ${computerWins}, Ties: ${ties}`;
+    }
 }
 
 // This function takes no input and uses a random number 0, 1, or 2 to decide rock, paper, or scissors
@@ -53,6 +61,6 @@ function game() {
     }
 }
 
+//initialize event listeners for the rock, paper, and scissors buttons
 const buttons = document.querySelectorAll('.button');
 buttons.forEach(button => button.addEventListener('click',playRound));
-console.log(buttons);
