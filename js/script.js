@@ -4,11 +4,9 @@ let playerWins = 0;
 let computerWins = 0;
 let ties = 0;
 
-game();
-
 // This function runs 1 round of rock paper scissors
-function playRound() {
-    let playerChoice = getPlayerChoice().toUpperCase();
+function playRound(e) {
+    let playerChoice = this.id.toUpperCase();
     let computerChoice = getComputerChoice().toUpperCase();
     if ((playerChoice === 'ROCK' && computerChoice === 'SCISSORS') 
     || (playerChoice === 'PAPER' && computerChoice === 'ROCK') 
@@ -23,9 +21,8 @@ function playRound() {
     } else {
         console.log(`Its a Tie! Both players chose ${playerChoice}`);
         ties++;
-        
-
     }
+    console.log(`${playerWins} wins, ${computerWins} losses, and ${ties} ties`)
 }
 
 // This function takes no input and uses a random number 0, 1, or 2 to decide rock, paper, or scissors
@@ -54,3 +51,7 @@ function game() {
         console.log(`You ties with the computer!`);
     }
 }
+
+const buttons = document.querySelectorAll('.button');
+buttons.forEach(button => button.addEventListener('click',playRound));
+console.log(buttons);
