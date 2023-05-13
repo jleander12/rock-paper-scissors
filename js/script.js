@@ -1,14 +1,15 @@
 const CHOICES = ['ROCK','PAPER','SCISSORS'];
-let choiceMessage = 'Please select ROCK, PAPER, or SCISSORS';
 let playerWins = 0;
 let computerWins = 0;
 let ties = 0;
+let gameOverFlag = false;
 
 // This function runs 1 round of rock paper scissors
 function playRound(e) {
     let playerChoice = this.id.toUpperCase();
     let computerChoice = getComputerChoice().toUpperCase();
     //determine who won and increment total points
+    if (gameOverFlag) return;
     if ((playerChoice === 'ROCK' && computerChoice === 'SCISSORS') 
         || (playerChoice === 'PAPER' && computerChoice === 'ROCK') 
         || (playerChoice === 'SCISSORS' && computerChoice === 'PAPER')) {
@@ -24,11 +25,12 @@ function playRound(e) {
         ties++;
     }
     //update score banner
-    const currentScore = document.getElementById('score');
     if (playerWins >= 5) {
         currentScore.innerHTML = `You've won! Congratulations!`;
+        gameOverFlag = true;
     } else if (computerWins >= 5) {
         currentScore.innerHTML = `Oh no, you lost! Better luck next time!`;
+        gameOverFlag = true;
     } else {
         currentScore.innerHTML = `Player: ${playerWins}, Computer: ${computerWins}, Ties: ${ties}`;
     }
@@ -61,6 +63,20 @@ function game() {
     }
 }
 
+function resetScore() {
+    playerWins = 0;
+    computerWins = 0;
+    ties = 0;
+    gameOverFlag = false;
+    currentScore.innerHTML = 'Please select ROCK, PAPER, or SCISSORS to begin the game';
+}
+
+const currentScore = document.getElementById('score');
+
 //initialize event listeners for the rock, paper, and scissors buttons
-const buttons = document.querySelectorAll('.button');
-buttons.forEach(button => button.addEventListener('click',playRound));
+const choices = document.querySelectorAll('.choice');
+choices.forEach(choice => choice.addEventListener('click',playRound));
+
+//initialize event listener on the reset button
+const reset = document.querySelector('#reset');
+reset.addEventListener('click', resetScore);
