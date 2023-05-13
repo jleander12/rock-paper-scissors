@@ -9,13 +9,13 @@ function playRound(e) {
     let playerChoice = this.id.toUpperCase();
     let computerChoice = getComputerChoice().toUpperCase();
     if ((playerChoice === 'ROCK' && computerChoice === 'SCISSORS') 
-    || (playerChoice === 'PAPER' && computerChoice === 'ROCK') 
-    || (playerChoice === 'SCISSORS' && computerChoice === 'PAPER')) {
+        || (playerChoice === 'PAPER' && computerChoice === 'ROCK') 
+        || (playerChoice === 'SCISSORS' && computerChoice === 'PAPER')) {
         console.log(`You Win! ${playerChoice} beats ${computerChoice}`);
         playerWins++;
     } else if ((computerChoice === 'ROCK' && playerChoice === 'SCISSORS') 
-    || (computerChoice === 'PAPER' && playerChoice === 'ROCK') 
-    || (computerChoice === 'SCISSORS' && playerChoice === 'PAPER')) {
+        || (computerChoice === 'PAPER' && playerChoice === 'ROCK') 
+        || (computerChoice === 'SCISSORS' && playerChoice === 'PAPER')) {
         console.log(`You Lose! ${playerChoice} is beaten by ${computerChoice}`);
         computerWins++;
     } else {
